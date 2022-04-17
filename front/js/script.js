@@ -1,20 +1,6 @@
 
 var maSection = document.getElementById("items");
 
-/*var articlesCanap = (product);
-console.log(articlesCanap[0]);
-console.log(articlesCanap[2].name);
-
-var mesArticlesLiens = document.createElement("a");
-mesArticlesLiens.href = "#";
-console.log(mesArticlesLiens);
-var mesArticlesArticles = document.createElement("article");
-var mesArticlesImg = document.createElement("img");
-var mesArticlesNomProduit = document.createElement("h3");
-var mesArticlesDescription = document.createElement("p");
-// mesArticlesImg.alt = //articlesCanap[i].altTxt;*/
-
-
 
 function nouveauLien(product){
    lienSection =  document.createElement("a");
