@@ -15,3 +15,15 @@ function imageProduit(product){
   divProduit.appendChild(imgProduct);
   imgProduct.setAttribute("src",product.imgUrl);
 }
+
+var pageUrl = window.location.href;
+console.log(pageUrl);
+var titrePage = document.querySelector("title");
+
+function nouveauTitre(product){
+  if (pageUrl.indexOf("id="+product._id)){
+    titrePage.textContent = product.name;}
+  else{
+    titrePage.textContent = Non;
+  } 
+}
