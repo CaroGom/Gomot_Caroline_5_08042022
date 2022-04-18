@@ -1,4 +1,4 @@
-fetch('http://localhost:3000/api/products')
+/*fetch('http://localhost:3000/api/products')
 .then(function(res){
     if (res.ok){
         return res.json();
@@ -7,6 +7,7 @@ fetch('http://localhost:3000/api/products')
 .then(function(data) {
     for (let i in data){
     imageProduit(data[i])
+    nouveauTitre(data[i])
     }
 })
 var divProduit = document.querySelector("article > .item__img");
@@ -27,3 +28,13 @@ function nouveauTitre(product){
     titrePage.textContent = Non;
   } 
 }
+
+
+var str = "./product.html?id=107fb5b75607497b96722bda5b504926";
+
+var url = new URL(str);
+
+var urlId = url.searchParams.get("id");
+
+console.log(urlId);
+*/
