@@ -17,6 +17,14 @@ function getBasket(){
 
 function addBasket(product){
     let basket = getBasket();
-    basket.push(product);
+    let foundProduct = basket.find (p => p.id == product.id)
+        if (foundProduct != undefined){
+            foundProduct.quantity++;
+        }
+        else {
+            product.quantity = 1;
+            basket.push(product);
+        }
+    
     saveBasket(basket);
 }
