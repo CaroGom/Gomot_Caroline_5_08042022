@@ -1,40 +1,53 @@
-/*fetch('http://localhost:3000/api/products')
+//fetch and DOM insertions
+
+fetch('http://localhost:3000/api/products')
 .then(function(res){
     if (res.ok){
         return res.json();
     }
 })
 .then(function(data) {
-    for (let i in data){
-    imageProduit(data[i])
-    nouveauTitre(data[i])
-    }
+   
+    var urlIndex = data.findIndex(product => product._id == urlId)
+    console.log(urlIndex);
+    var selectedItem = data[urlIndex];
+    console.log(selectedItem);
+      titrePageProduit(selectedItem)
+      imageProduit(selectedItem)
+      titreProduit(selectedItem)
 })
+
+//setting up the id recuperation in page url
+var urlId = new URLSearchParams(document.location.search).get("id")
+console.log(urlId);
+
+//getting image div, insertion of img in DOM
 var divProduit = document.querySelector("article > .item__img");
+
 function imageProduit(product){
-  imgProduct = document.createElement("img");
-  divProduit.appendChild(imgProduct);
-  imgProduct.setAttribute("src",product.imgUrl);
+    imgProduct = document.createElement("img");
+    divProduit.appendChild(imgProduct);
+    imgProduct.setAttribute("src", product.imageUrl);
+    imgProduct.setAttribute("alt", product.altTxt);
+
 }
 
-var pageUrl = window.location.href;
-console.log(pageUrl);
+//getting title tag, insertion of selectedItem title in tag
 var titrePage = document.querySelector("title");
 
-function nouveauTitre(product){
-  if (pageUrl.indexOf("id="+product._id)){
-    titrePage.textContent = product.name;}
+function titrePageProduit(product){
+  urlId.indexOf(product._id);
+  if (urlId == product._id){
+ titrePage.textContent = product.name;
+  console.log(product._id, urlId)}
   else{
-    titrePage.textContent = Non;
+    titrePage.textContent = "Non";
   } 
+
 }
 
+var produitH1 = document.querySelector("h1");
 
-var str = "./product.html?id=107fb5b75607497b96722bda5b504926";
-
-var url = new URL(str);
-
-var urlId = url.searchParams.get("id");
-
-console.log(urlId);
-*/
+function titreProduit(product){
+    produitH1.textContent = product.name;
+}

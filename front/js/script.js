@@ -50,7 +50,8 @@ fetch('http://localhost:3000/api/products')
         nouvelleImg(data[i])
         nouveauTitreProduit(data[i])
         nouvelleDescription(data[i])
-    }})
+    }
+})
 
 
 
