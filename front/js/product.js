@@ -15,6 +15,9 @@ fetch('http://localhost:3000/api/products')
       titrePageProduit(selectedItem)
       imageProduit(selectedItem)
       titreProduit(selectedItem)
+      prixProduit(selectedItem)
+      descriptionProduit(selectedItem)
+      couleursProduit(selectedItem)
 })
 
 //setting up the id recuperation in page url
@@ -32,7 +35,7 @@ function imageProduit(product){
 
 }
 
-//getting title tag, insertion of selectedItem title in tag
+//getting title tag, insertion of selectedItem .name in tag
 var titrePage = document.querySelector("title");
 
 function titrePageProduit(product){
@@ -45,9 +48,36 @@ function titrePageProduit(product){
   } 
 
 }
-
-var produitH1 = document.querySelector("h1");
+//getting the product h1 title tag, inserting of selectedItem .name in tag
+var produitH1 = document.querySelector("#title");
 
 function titreProduit(product){
     produitH1.textContent = product.name;
+}
+
+//getting the product price span tag, inserting the selectedItem .price in tag
+var produitPrixSpan = document.querySelector("#price");
+
+function prixProduit(product){
+    produitPrixSpan.textContent =product.price;
+}
+
+//getting the product description p tag, inserting the selectedItem .description in tag
+var produitDescriptionP = document.querySelector("#description");
+
+function descriptionProduit(product){
+    produitDescriptionP.textContent = product.description;
+}
+
+//getting the color select tag, inserting option tags in the DOM, for of loop to repeat according to color array in SelectedItem
+var couleursSelectTag = document.querySelector("#colors");
+
+function couleursProduit(product){
+    for (let color of product.colors){
+    console.log(color)
+    colorProduct = document.createElement("option")
+    couleursSelectTag.appendChild(colorProduct);
+    colorProduct.setAttribute("value", color)
+    colorProduct.textContent = color;
+    }
 }
