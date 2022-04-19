@@ -28,3 +28,9 @@ function addBasket(product){
     
     saveBasket(basket);
 }
+
+function removeFromBasket(product){
+    let basket = getBasket();
+    basket = basket.filter(p => p.id != product.id);
+    saveBasket(basket);
+}
