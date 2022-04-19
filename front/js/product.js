@@ -24,7 +24,7 @@ fetch('http://localhost:3000/api/products')
 var urlId = new URLSearchParams(document.location.search).get("id")
 console.log(urlId);
 
-//getting image div, insertion of img in DOM
+//getting image div, insertion of img in DOM with src and alt attributes from selectedItem
 var divProduit = document.querySelector("article > .item__img");
 
 function imageProduit(product){
@@ -81,3 +81,5 @@ function couleursProduit(product){
     colorProduct.textContent = color;
     }
 }
+
+//Putting products in the basket
