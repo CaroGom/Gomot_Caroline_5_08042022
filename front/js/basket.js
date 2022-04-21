@@ -19,10 +19,10 @@ function addBasket(product){
     let basket = getBasket();
     let foundProduct = basket.find (p => p.id == product.id)
         if (foundProduct != undefined){
-            foundProduct.quantity++;
+            foundProduct.numberof++;
         }
         else {
-            product.quantity = 1;
+            product.numberof = 1;
             basket.push(product);
         }
     
@@ -35,12 +35,12 @@ function removeFromBasket(product){
     saveBasket(basket);
 }
 
-function changeQuantity(product, quantity){
+function changeQuantity(product, numberof){
     let basket = getBasket();
     let foundProduct = basket.find (p => p.id == product.id)
         if (foundProduct != undefined){
-            foundProduct.quantity += quantity;
-            if(foundProduct.quantity <= 0){
+            foundProduct.numberof += numberof;
+            if(foundProduct.numberof <= 0){
                 removeFromBasket(foundProduct);
             }
             else{
@@ -53,7 +53,7 @@ function getNumberProduct(){
     let basket = getBasket();
     let number = 0;
     for (let product of basket){
-        number += product.quantity;
+        number += product.numberof;
     }
     return number;
 }
@@ -62,7 +62,7 @@ function getTotalPrice(){
     let basket = getBasket();
     let total = 0;
     for (let product of basket){
-        total += product.quantity * product.price;
+        total += product.numberof * product.price;
     }
     return total;
 
