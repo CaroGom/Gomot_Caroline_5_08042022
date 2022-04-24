@@ -95,11 +95,13 @@ var quantity = document.getElementById("quantity");
 
 
 var btnCartAdd = document.getElementById("addToCart").addEventListener("click", function() {
-    var selectedProductInfo = {id : urlId, color : colors.value, numberof : quantity.value};
+    var selectedProductInfo = {id : urlId, color : colors.value, numberof : parseInt(quantity.value)};
     console.log(selectedProductInfo);
     
     addBasket(selectedProductInfo);
-    alert("Produit ajouté au panier");
+    getBasket();
+    var produitsPanier = console.log(getBasket());
+    alert("Vous avez dans votre panier" + " "+ produitsPanier);
 
 });
 

@@ -15,9 +15,26 @@ function getBasket(){
     }
 }
 
+
 function addBasket(product){
     let basket = getBasket();
-    let foundProduct = basket.find (p => p.id == product.id)
+    let foundProduct = basket.find (p => p.id == product.id && p.color == product.color)
+    console.log(foundProduct);
+        if (foundProduct != undefined){
+            foundProduct.numberof += product.numberof;
+        }
+        else {
+        
+            basket.push(product);
+        }
+    
+    saveBasket(basket);
+}
+
+/*
+function addBasket(product){
+    let basket = getBasket();
+    let foundProduct = basket.find (p => p.id == product.id, p.colors == product.colors)
         if (foundProduct != undefined){
             foundProduct.numberof++;
         }
@@ -28,6 +45,8 @@ function addBasket(product){
     
     saveBasket(basket);
 }
+
+*/
 
 function removeFromBasket(product){
     let basket = getBasket();
