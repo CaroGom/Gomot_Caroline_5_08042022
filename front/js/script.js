@@ -5,7 +5,7 @@ var maSection = document.getElementById("items");
 function nouveauLien(product){
    lienSection =  document.createElement("a");
    items.appendChild(lienSection);
-   lienSection.setAttribute("href","./product.html?id="+product._id);
+   lienSection.setAttribute("href","./product.html?id="+product._id+"");
 }
 
 function nouvelArticle(){
@@ -50,6 +50,7 @@ fetch('http://localhost:3000/api/products')
         nouvelleImg(data[i])
         nouveauTitreProduit(data[i])
         nouvelleDescription(data[i])
+        
     }
 })
 
