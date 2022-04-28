@@ -76,7 +76,7 @@ function voirPanier(i) {
     nodeParent = document.getElementsByClassName("cart__item__content")[i];
     divProduitPanier("__settings");
     divProduitPanier("__quantity");
-    paragrapheProduitPanier(i, "Qté: ");
+    descriptionProduitPanier(i, "Qté: ");
  
 }
 
