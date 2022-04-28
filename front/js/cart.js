@@ -18,7 +18,7 @@ console.log(panier[i].id);
             panier[i].price = data.price;
             panier[i].imageUrl = data.imageUrl;
             panier[i].altTxt = data.altTxt;
-            articleProduitPanier(panier[i]);
+            voirPanier(i);
          
         })
     }
@@ -34,7 +34,7 @@ function articleProduitPanier(product){
     nodeParent = articlePanier;
  }
 
- function divImgProduitPanier(endOfClass){
+ function divProduitPanier(endOfClass){
     newDiv = document.createElement("div")
     nodeParent.appendChild(newDiv)
     newDiv.classList.add(nodeParent.className + endOfClass)
@@ -47,8 +47,17 @@ function imgProduitPanier(product) {
     imgProduit.setAttribute("src",product.imageUrl);
     imgProduit.setAttribute("alt",product.altTxt);
  }
- 
 
+ function voirPanier(i) {
+    articleProduitPanier(i)
+    divProduitPanier("__img")
+    createImg(panier[i])
+    nodeParent = articlePanier;
+    divProduitPanier("__content")
+    divProduitPanier("__description")
+    titreProduitPanier(panier[i])
+ 
+ }
 function titreProduitPanier(product){
     titreProduit = document.createElement("h2");
     nodeParent.appendChild(titreProduit);
