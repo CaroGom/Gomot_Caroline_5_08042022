@@ -51,7 +51,7 @@ function imgProduitPanier(product) {
  function voirPanier(i) {
     articleProduitPanier(i)
     divProduitPanier("__img")
-    createImg(panier[i])
+    imgProduitPanier(panier[i])
     nodeParent = articlePanier;
     divProduitPanier("__content")
     divProduitPanier("__description")
