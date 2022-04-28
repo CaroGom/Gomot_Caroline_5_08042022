@@ -30,19 +30,30 @@ function articleProduitPanier(product){
     cart__items.appendChild(articlePanier);
     articlePanier.setAttribute("data-id",product.id);
     articlePanier.setAttribute("data-color",product.color);
-    articlePanier.setAttribute("class","cart__item");
+    articlePanier.classList.add("cart__item")
+    nodeParent = articlePanier;
  }
 
- function divImgProduitPanier(product){
-    divImg =  document.createElement("div");
-    articlePanier.appendChild(divImg);
-    divImg.setAttribute("class", "cart__item__img");
+ function divImgProduitPanier(endOfClass){
+    newDiv = document.createElement("div")
+    nodeParent.appendChild(newDiv)
+    newDiv.classList.add(nodeParent.className + endOfClass)
+    nodeParent = newDiv
+ }
+
+function imgProduitPanier(product) {   
     imgProduit = document.createElement("img");
-    divImg.appendChild(imgProduit);
+    nodeParent.appendChild(imgProduit)
     imgProduit.setAttribute("src",product.imageUrl);
     imgProduit.setAttribute("alt",product.altTxt);
  }
  
+
+function titreProduitPanier(product){
+    titreProduit = document.createElement("h2");
+    nodeParent.appendChild(titreProduit);
+    titreProduit.textContent = product.name;
+}
  function divContenuProduitPanier(product){
     divContenu =  document.createElement("div");
     articlePanier.appendChild(divContenu);
