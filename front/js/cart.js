@@ -61,18 +61,22 @@ function descriptionProduitPanier(index, text){
 }
 
 function voirPanier(i) {
-    articleProduitPanier(i)
-    divProduitPanier("__img")
-    imgProduitPanier(panier[i])
+    articleProduitPanier(i);
+    divProduitPanier("__img");
+    imgProduitPanier(panier[i]);
     nodeParent = articlePanier;
-    divProduitPanier("__content")
-    divProduitPanier("__description")
-    titreProduitPanier(panier[i])
-    descriptionProduitPanier(i, panier[i].color)
+    divProduitPanier("__content");
+    divProduitPanier("__description");
+    titreProduitPanier(panier[i]);
+    descriptionProduitPanier(i, panier[i].color);
     descriptionProduitPanier(i, new Intl.NumberFormat('fr-FR', {
         style: 'currency',
         currency: 'EUR'
     }) .format (panier[i].price));
+    nodeParent = document.getElementsByClassName("cart__item__content")[i];
+    divProduitPanier("__settings");
+    divProduitPanier("__quantity");
+    paragrapheProduitPanier(i, "Qté: ");
  
 }
 
