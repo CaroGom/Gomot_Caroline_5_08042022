@@ -46,9 +46,21 @@ function imgProduitPanier(product) {
     nodeParent.appendChild(imgProduit)
     imgProduit.setAttribute("src",product.imageUrl);
     imgProduit.setAttribute("alt",product.altTxt);
- }
+}
 
- function voirPanier(i) {
+function titreProduitPanier(product){
+    titreProduit = document.createElement("h2");
+    nodeParent.appendChild(titreProduit);
+    titreProduit.textContent = product.name;
+}
+
+function descriptionProduitPanier(index, text){
+    paragrapheProduitPanier = document.createElement("p");
+    nodeParent.appendChild(paragrapheProduitPanier);
+    paragrapheProduitPanier.textContent = text;
+}
+
+function voirPanier(i) {
     articleProduitPanier(i)
     divProduitPanier("__img")
     imgProduitPanier(panier[i])
@@ -56,24 +68,13 @@ function imgProduitPanier(product) {
     divProduitPanier("__content")
     divProduitPanier("__description")
     titreProduitPanier(panier[i])
+    descriptionProduitPanier(i, panier[i].color)
+    descriptionProduitPanier(i, panier[i].price)
  
- }
-function titreProduitPanier(product){
-    titreProduit = document.createElement("h2");
-    nodeParent.appendChild(titreProduit);
-    titreProduit.textContent = product.name;
 }
- function divContenuProduitPanier(product){
-    divContenu =  document.createElement("div");
-    articlePanier.appendChild(divContenu);
-    divContenu.setAttribute("class", "cart__item__content");
-    divContenuDescription =  document.createElement("div");
-    divContenu.appendChild(divContenuDescription);
-    divContenuDescription.setAttribute("class", "cart__item__content__description");
 
-    titreProduit = document.createElement("h2");
-    divContenuDescription.appendChild(titreProduit);
-    titreProduit.textContent = product.name;
+ function divContenuProduitPanier(product){
+    
     couleurProduit = document.createElement("p");
     divContenuDescription.appendChild(couleurProduit);
     couleurProduit.textContent = product.color;
