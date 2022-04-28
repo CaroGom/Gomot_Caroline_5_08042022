@@ -100,8 +100,8 @@ var btnCartAdd = document.getElementById("addToCart").addEventListener("click", 
     
     addBasket(selectedProductInfo);
     getBasket();
-    var produitsPanier = console.log(getBasket());
-    alert("Vous avez dans votre panier" + " "+ produitsPanier);
+    var produitsPanier = console.log(getBasket([]));
+    alert("Vous avez dans votre panier " + produitsPanier )
 
 });
 
