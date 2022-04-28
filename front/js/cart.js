@@ -69,7 +69,10 @@ function voirPanier(i) {
     divProduitPanier("__description")
     titreProduitPanier(panier[i])
     descriptionProduitPanier(i, panier[i].color)
-    descriptionProduitPanier(i, panier[i].price)
+    descriptionProduitPanier(i, new Intl.NumberFormat('fr-FR', {
+        style: 'currency',
+        currency: 'EUR'
+    }) .format (panier[i].price));
  
 }
 
