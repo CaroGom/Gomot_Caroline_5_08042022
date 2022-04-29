@@ -68,7 +68,7 @@ function inputQteProduitPanier(product){
     inputQuantity.setAttribute("name","itemQuantity");
     inputQuantity.setAttribute("min","1");
     inputQuantity.setAttribute("max","100");
-    inputQuantity.value(product.numberof);
+    inputQuantity.value = product.numberof;
 }
 
 function voirPanier(i) {
