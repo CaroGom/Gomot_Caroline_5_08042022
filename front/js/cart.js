@@ -80,7 +80,7 @@ function additionPrixProduitsPanier(product){
         qteTotale += panier[i].numberof;
     }
 
-    document.getElementById("totalQuantity").textContent = qteTotale;
+    document.getElementById("totalQuantity").innerText = qteTotale;
 }
 
 function voirPanier(i) {
