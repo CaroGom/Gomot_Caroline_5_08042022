@@ -60,6 +60,17 @@ function descriptionProduitPanier(index, text){
     paragrapheProduitPanier.textContent = text;
 }
 
+function inputQteProduitPanier(product){
+    inputQuantity = document.createElement("input");
+    nodeParent.appendChild(inputQuantity);
+    inputQuantity.setAttribute("type","number");
+    inputQuantity.className("itemQuantity");
+    inputQuantity.setAttribute("name","itemQuantity");
+    inputQuantity.setAttribute("min","1");
+    inputQuantity.setAttribute("max","100");
+    inputQuantity.value(product.numberof);
+}
+
 function voirPanier(i) {
     articleProduitPanier(i);
     divProduitPanier("__img");
@@ -77,6 +88,7 @@ function voirPanier(i) {
     divProduitPanier("__settings");
     divProduitPanier("__quantity");
     descriptionProduitPanier(i, "Qté: ");
+    inputQteProduitPanier(panier[i]);
  
 }
 
