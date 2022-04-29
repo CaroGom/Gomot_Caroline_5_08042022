@@ -76,7 +76,7 @@ function additionPrixProduitsPanier(){
     qteTotale = 0;
     
     for (let i in panier){
-        prixTotal += product.price * panier[i].numberof;
+        prixTotal += panier[i].price * panier[i].numberof;
         qteTotale += panier[i].numberof;
     }
     console.log(qteTotale);
