@@ -69,6 +69,11 @@ function inputQteProduitPanier(product){
     inputQuantity.setAttribute("min","1");
     inputQuantity.setAttribute("max","100");
     inputQuantity.value = product.numberof;
+
+    inputQuantity.onchange = function(){
+        miseAJourQtePanier(product, this);
+        additionPrixProduitsPanier();
+    }
 }
 
 function additionPrixProduitsPanier(){
@@ -84,6 +89,11 @@ function additionPrixProduitsPanier(){
 
     document.getElementById("totalQuantity").innerText = qteTotale;
     document.getElementById("totalPrice").innerText = prixTotal;
+}
+
+function miseAJourQtePanier(anyProduct, input){
+    anyProduct.numberof = parseInt(input.value);
+    localStorage.cart = JSON.stringify(panier);
 }
 
 function voirPanier(i) {
