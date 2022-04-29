@@ -71,7 +71,7 @@ function inputQteProduitPanier(product){
     inputQuantity.value = product.numberof;
 }
 
-function additionPrixProduitsPanier(product){
+function additionPrixProduitsPanier(){
     prixTotal = 0;
     qteTotale = 0;
     
@@ -103,7 +103,7 @@ function voirPanier(i) {
     divProduitPanier("__quantity");
     descriptionProduitPanier(i, "Qté: ");
     inputQteProduitPanier(panier[i]);
- 
+    additionPrixProduitsPanier();
 }
 
  function divContenuProduitPanier(product){
