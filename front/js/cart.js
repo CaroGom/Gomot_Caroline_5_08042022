@@ -64,7 +64,7 @@ function inputQteProduitPanier(product){
     inputQuantity = document.createElement("input");
     nodeParent.appendChild(inputQuantity);
     inputQuantity.setAttribute("type","number");
-    inputQuantity.className("itemQuantity");
+    inputQuantity.className= "itemQuantity";
     inputQuantity.setAttribute("name","itemQuantity");
     inputQuantity.setAttribute("min","1");
     inputQuantity.setAttribute("max","100");
