@@ -83,6 +83,7 @@ function additionPrixProduitsPanier(){
     console.log(prixTotal);
 
     document.getElementById("totalQuantity").innerText = qteTotale;
+    document.getElementById("totalPrice").innerText = prixTotal;
 }
 
 function voirPanier(i) {
