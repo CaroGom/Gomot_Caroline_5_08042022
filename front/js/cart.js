@@ -71,6 +71,18 @@ function inputQteProduitPanier(product){
     inputQuantity.value = product.numberof;
 }
 
+function additionPrixProduitsPanier(product){
+    prixTotal = 0;
+    qteTotale = 0;
+    
+    for (let i in panier){
+        prixTotal += product.price * panier[i].numberof;
+        qteTotale += panier[i].numberof;
+    }
+
+    document.getElementById("totalQuantity").textContent = qteTotale;
+}
+
 function voirPanier(i) {
     articleProduitPanier(i);
     divProduitPanier("__img");
