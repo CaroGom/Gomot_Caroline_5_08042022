@@ -70,12 +70,24 @@ function inputQteProduitPanier(product){
     inputQuantity.setAttribute("max","100");
     inputQuantity.value = product.numberof;
 
-    inputQuantity.onchange = function(){
+    
+}
+
+
+
+
+
+function suppressionArticlePanier(product){
+    paragraph = document.createElement("p");
+    var paragraphDelete = document.querySelector(".cart__item__content__settings__delete > .deleteItem");
+    paragraphDelete.appendChild(paragraph);
+    
+    
+}
+inputQuantity.onchange = function(){
         miseAJourQtePanier(product, this);
         additionPrixProduitsPanier();
     }
-}
-
 function additionPrixProduitsPanier(){
     prixTotal = 0;
     qteTotale = 0;
@@ -113,8 +125,13 @@ function voirPanier(i) {
     divProduitPanier("__settings");
     divProduitPanier("__quantity");
     descriptionProduitPanier(i, "Qté: ");
+   
     inputQteProduitPanier(panier[i]);
     additionPrixProduitsPanier();
+    nodeParent = document.getElementsByClassName("cart__item__content__settings")[i];
+    divProduitPanier("__delete");
+    descriptionProduitPanier(i, "Supprimer", "delete");
+    suppressionArticlePanier(panier[i]);
 }
 
  function divContenuProduitPanier(product){
