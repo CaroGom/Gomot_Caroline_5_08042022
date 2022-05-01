@@ -62,7 +62,7 @@ function descriptionProduitPanier(index, text){
     if (paragrapheProduitPanier.closest("div").className="cart__item__content__settings__delete"){
         paragrapheProduitPanier.classList.add("deleteItem");
         paragrapheProduitPanier.onclick = function(){
-            removeFromBasket(product);
+            removeFromBasket(index, this);
         }
     }
 }
@@ -83,12 +83,6 @@ function inputQteProduitPanier(product){
     }
     
 }
-
-
-
-
-
-
 
 function additionPrixProduitsPanier(){
     prixTotal = 0;
