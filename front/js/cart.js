@@ -70,6 +70,10 @@ function inputQteProduitPanier(product){
     inputQuantity.setAttribute("max","100");
     inputQuantity.value = product.numberof;
 
+    inputQuantity.onchange = function(){
+        miseAJourQtePanier(product, this);
+        additionPrixProduitsPanier();
+    }
     
 }
 
@@ -84,10 +88,7 @@ function suppressionArticlePanier(product){
     
     
 }
-inputQuantity.onchange = function(){
-        miseAJourQtePanier(product, this);
-        additionPrixProduitsPanier();
-    }
+
 function additionPrixProduitsPanier(){
     prixTotal = 0;
     qteTotale = 0;
