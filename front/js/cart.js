@@ -58,6 +58,13 @@ function descriptionProduitPanier(index, text){
     paragrapheProduitPanier = document.createElement("p");
     nodeParent.appendChild(paragrapheProduitPanier);
     paragrapheProduitPanier.textContent = text;
+
+    if (paragrapheProduitPanier.closest("div").className="cart__item__content__settings__delete"){
+        paragrapheProduitPanier.classList.add("deleteItem");
+        paragrapheProduitPanier.onclick = function(){
+            removeFromBasket(product);
+        }
+    }
 }
 
 function inputQteProduitPanier(product){
@@ -126,7 +133,7 @@ function voirPanier(i) {
     nodeParent = document.getElementsByClassName("cart__item__content__settings")[i];
     divProduitPanier("__delete");
     descriptionProduitPanier(i, "Supprimer", "delete");
-    suppressionArticlePanier(panier[i]);
+    
 }
 
  function divContenuProduitPanier(product){
