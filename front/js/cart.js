@@ -82,9 +82,6 @@ function inputQteProduitPanier(product){
 
 
 
-    
-    
-}
 
 function additionPrixProduitsPanier(){
     prixTotal = 0;
