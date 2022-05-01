@@ -81,10 +81,7 @@ function inputQteProduitPanier(product){
 
 
 
-function suppressionArticlePanier(product){
-    paragraph = document.createElement("p");
-    var paragraphDelete = document.querySelector(".cart__item__content__settings__delete > .deleteItem");
-    paragraphDelete.appendChild(paragraph);
+
     
     
 }
