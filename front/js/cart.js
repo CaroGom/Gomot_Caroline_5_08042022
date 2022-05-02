@@ -63,7 +63,7 @@ function descriptionProduitPanier(index, text){
         paragrapheProduitPanier.classList.add("deleteItem");
         paragrapheProduitPanier.onclick = function(){
             removeFromBasket(index, this);
-            miseAJourQtePanier(product, this);
+            miseAJourQtePanier(index, this);
         }
     }
 }
