@@ -60,7 +60,7 @@ function descriptionProduitPanier(index, text){
     nodeParent.appendChild(paragrapheProduitPanier);
     paragrapheProduitPanier.textContent = text;
 
-    if (paragrapheProduitPanier.closest("div").className="cart__item__content__settings__delete"){
+    if (paragrapheProduitPanier.closest("div").className=="cart__item__content__settings__delete"){
         paragrapheProduitPanier.classList.add("deleteItem");
         paragrapheProduitPanier.onclick = function(){
             enleverProduitPanier(index, this);
