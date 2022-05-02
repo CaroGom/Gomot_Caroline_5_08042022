@@ -137,13 +137,13 @@ function voirPanier(i) {
     descriptionProduitPanier(i, "Qté: ");
    
     inputQteProduitPanier(panier[i]);
-    additionPrixProduitsPanier();
+    
     nodeParent = document.getElementsByClassName("cart__item__content__settings")[i];
     divProduitPanier("__delete");
     descriptionProduitPanier(i, "Supprimer", "delete");
     
 }
-
+/*
  function divContenuProduitPanier(product){
     
     couleurProduit = document.createElement("p");
