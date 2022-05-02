@@ -28,8 +28,8 @@ var basketContent = getBasket();
 function articleProduitPanier(product){
     articlePanier =  document.createElement("article");
     cart__items.appendChild(articlePanier);
-    articlePanier.setAttribute("data-id",product.id);
-    articlePanier.setAttribute("data-color",product.color);
+    articlePanier.setAttribute("data-id",panier[i].id);
+    articlePanier.setAttribute("data-color",panier[i].color);
     articlePanier.classList.add("cart__item")
     nodeParent = articlePanier;
  }
