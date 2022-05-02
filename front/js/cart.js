@@ -62,10 +62,22 @@ function descriptionProduitPanier(index, text){
     if (paragrapheProduitPanier.closest("div").className="cart__item__content__settings__delete"){
         paragrapheProduitPanier.classList.add("deleteItem");
         paragrapheProduitPanier.onclick = function(){
-            removeFromBasket(index, this);
-            miseAJourQtePanier();
+            enleverProduitPanier(index, this);
+            
         }
     }
+}
+
+function enleverProduitPanier(index, element){
+    if (panier.length ==1){
+        panier = [];
+    }
+    else {
+        panier.splice(index, 1)
+    }
+    localStorage.cart = JSON.stringify(panier);
+    element.closest("article").remove();
+    miseAJourQtePanier();
 }
 
 function inputQteProduitPanier(product){
