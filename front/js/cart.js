@@ -90,6 +90,7 @@ function inputQteProduitPanier(product){
     inputQuantity.setAttribute("min","1");
     inputQuantity.setAttribute("max","100");
     inputQuantity.value = product.numberof;
+    additionPrixProduitsPanier();
 
     inputQuantity.onchange = function(){
         miseAJourQtePanier(product, this);
@@ -143,6 +144,7 @@ function voirPanier(i) {
     nodeParent = document.getElementsByClassName("cart__item__content__settings")[i];
     divProduitPanier("__delete");
     descriptionProduitPanier(i, "Supprimer", "delete");
+    
     
 }
 
