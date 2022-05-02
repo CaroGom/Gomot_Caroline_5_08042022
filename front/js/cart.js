@@ -79,6 +79,7 @@ function enleverProduitPanier(index, element){
     localStorage.cart = JSON.stringify(panier);
     element.closest("article").remove();
     getBasket();
+    additionPrixProduitsPanier()
 }
 
 function inputQteProduitPanier(product){
