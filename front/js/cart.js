@@ -78,7 +78,7 @@ function enleverProduitPanier(index, element){
     }
     localStorage.cart = JSON.stringify(panier);
     element.closest("article").remove();
-    miseAJourQtePanier();
+    
 }
 
 function inputQteProduitPanier(product){
