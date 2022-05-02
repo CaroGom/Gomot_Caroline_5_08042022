@@ -18,6 +18,7 @@ console.log(panier[i].id);
             panier[i].price = data.price;
             panier[i].imageUrl = data.imageUrl;
             panier[i].altTxt = data.altTxt;
+
             voirPanier(i);
          
         })
@@ -28,8 +29,8 @@ var basketContent = getBasket();
 function articleProduitPanier(product){
     articlePanier =  document.createElement("article");
     cart__items.appendChild(articlePanier);
-    articlePanier.setAttribute("data-id",panier[i].id);
-    articlePanier.setAttribute("data-color",panier[i].color);
+    articlePanier.setAttribute("data-id",product.id);
+    articlePanier.setAttribute("data-color",product.color);
     articlePanier.classList.add("cart__item")
     nodeParent = articlePanier;
  }
@@ -118,7 +119,7 @@ function miseAJourQtePanier(anyProduct, input){
 }
 
 function voirPanier(i) {
-    articleProduitPanier(i);
+    articleProduitPanier(panier[i]);
     divProduitPanier("__img");
     imgProduitPanier(panier[i]);
     nodeParent = articlePanier;
