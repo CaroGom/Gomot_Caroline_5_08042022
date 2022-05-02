@@ -211,6 +211,29 @@ function creerInfosCommandePanier(){
     }
 }
 
+document.querySelector(".cart__order__form").addEventListener("submit", function (event){
+    event.preventDefault();
+    creerIdListePanier();
+    creerInfosCommandePanier();
+    console.log(infosCommandePanier);
+    if (idListePanier != 0 && Object.values(results).every(value => value == true)){
+        fetch('http://localhost:3000/api/products/order', {
+            method: "POST",
+            headers : {
+                'Content-Type': 'application.json',
+            },
+            body: JSON.stringify(infosCommandePanier),
+        })
+        .then(function(response){
+            if (response.ok){
+                return response.json()
+            }
+        })
+        .then(function (data){
+           
+        })
+    }
+})
 
 /*
  function divContenuProduitPanier(product){
