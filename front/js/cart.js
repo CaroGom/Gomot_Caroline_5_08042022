@@ -189,6 +189,27 @@ verificationForm(address);
 verificationForm(city);
 verificationForm(email);
 
+var idListePanier = [];
+function creerIdListePanier(){
+    for (let i in panier){
+        idListePanier.push(panier[i].id);
+    }
+}
+
+var infosCommandePanier
+function creerInfosCommandePanier(){
+    infosCommandePanier ={
+        contact : {
+            firstName : firstName.value,
+            lastName : lastName.value,
+            address : address.value,
+            city : city.value,
+            email : email.value,
+        },
+        products : idListePanier,
+    }
+}
+
 
 /*
  function divContenuProduitPanier(product){
