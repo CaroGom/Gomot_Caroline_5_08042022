@@ -230,7 +230,12 @@ document.querySelector(".cart__order__form").addEventListener("submit", function
             }
         })
         .then(function (data){
-           
+           console.log(data)
+           localStorage.clear()
+           document.location.href = "confirmation.html?orderId=" +data.commandeIdConfirmation;
+        })
+        .catch (function (err){
+            console.log(err.message)
         })
     }
 })
