@@ -111,6 +111,8 @@ function additionPrixProduitsPanier(){
 
     document.getElementById("totalQuantity").innerText = qteTotale;
     document.getElementById("totalPrice").innerText = prixTotal;
+
+    console.log(panier);
 }
 
 function miseAJourQtePanier(anyProduct, input){
@@ -143,6 +145,35 @@ function voirPanier(i) {
     descriptionProduitPanier(i, "Supprimer", "delete");
     
 }
+
+
+var formInfos = {
+    prenomForm : false,
+    nomFamilleForm : false,
+    adresseForm : false,
+    villeForm : false, 
+    emailForm : false,
+}
+
+function verificationForm(element){
+    var regex
+    element.onchange = function () {
+        switch(element){
+            case prenomForm :
+            case nomFamilleForm :
+                regex = /[A-ZÀ-Ÿa-z- ']$/
+                break
+            case adresseForm :
+            case villeForm :
+                regex = /[0-9A-ZÀ-Ÿa-z-, ']$/
+                break
+            case emailForm :
+                regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                break
+        }
+    }
+}
+
 /*
  function divContenuProduitPanier(product){
     
