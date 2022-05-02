@@ -147,32 +147,46 @@ function voirPanier(i) {
 }
 
 
-var formInfos = {
-    prenomForm : false,
-    nomFamilleForm : false,
-    adresseForm : false,
-    villeForm : false, 
-    emailForm : false,
+var results = {
+    firstName : false,
+    lastName : false,
+    address : false,
+    city : false, 
+    email : false,
 }
 
 function verificationForm(element){
     var regex
     element.onchange = function () {
         switch(element){
-            case prenomForm :
-            case nomFamilleForm :
+            case firstName :
+            case lastName :
                 regex = /[A-ZÀ-Ÿa-z- ']$/
                 break
-            case adresseForm :
-            case villeForm :
+            case address :
+            case city :
                 regex = /[0-9A-ZÀ-Ÿa-z-, ']$/
                 break
-            case emailForm :
+            case email :
                 regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                 break
         }
+    results[element.name] = regex.test(element.value)
+        if (!results[element.name]){
+            document.getElementById(element.id + "ErrorMsg").innerText = "Format invalide";
+        }
+        else {
+            document.getElementById(element.id + "ErrorMsg").innerText = "";
+        }
     }
 }
+
+verificationForm(firstName);
+verificationForm(lastName);
+verificationForm(address);
+verificationForm(city);
+verificationForm(email);
+
 
 /*
  function divContenuProduitPanier(product){
