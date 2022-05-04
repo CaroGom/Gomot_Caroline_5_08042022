@@ -235,23 +235,26 @@ document.querySelector(".cart__order__form").addEventListener("submit", function
     console.log(infosCommandePanier);
 
     if (idListePanier != 0 && Object.values(results).every(value => value == true)){
-        fetch("http://localhost:3000/api/products/order", sendOrder) 
-        .then(function(response){
-            if (response.ok){
-                return response.json();
+      
+        fetch("http://localhost:3000/api/products/order", sendOrder)
+        .then(
+            async (response) => {
+                try {
+                    if(response.ok) {
+                        const data = await response.json();
+                        /*Réponse envoyée par l'API contenant l'orderId
+                        console.log(data);*/
+                        // Redirection vers la page Confirmation
+                        window.location.href = `confirmation.html?order=${data.orderId}`;
+                    }
+                }
+                catch(error) {
+                    alert("Le serveur ne répond pas. Si le problème persiste, contactez-nous");
+                };
             }
+          )  }
         })
-        .then(function (data){
-           console.log(data)
-           localStorage.clear()
-           window.location.href = "confirmation.html?order=${data.orderId}";
-           console.log(data.orderId);
-        })
-        .catch (function (err){
-            console.log(err.message)
-        })
-    }
-})
+
 
 /*
  function divContenuProduitPanier(product){
