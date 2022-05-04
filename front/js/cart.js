@@ -241,9 +241,11 @@ document.querySelector(".cart__order__form").addEventListener("submit", function
             async (response) => {
                 try {
                     if(response.ok) {
+
                         const data = await response.json();
                         /*Réponse envoyée par l'API contenant l'orderId
                         console.log(data);*/
+                        console.log(data);
                         // Redirection vers la page Confirmation
                         window.location.href = `confirmation.html?order=${data.orderId}`;
                     }
