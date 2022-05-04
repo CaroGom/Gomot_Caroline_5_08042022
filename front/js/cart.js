@@ -235,7 +235,7 @@ document.querySelector(".cart__order__form").addEventListener("submit", function
     console.log(infosCommandePanier);
 
     if (idListePanier != 0 && Object.values(results).every(value => value == true)){
-        fetch('http://localhost:3000/api/products/order', sendOrder) 
+        fetch("http://localhost:3000/api/products/order", sendOrder) 
         .then(function(response){
             if (response.ok){
                 return response.json();
