@@ -25,7 +25,7 @@ console.log(panier[i].id);
     }
 var basketContent = getBasket();
 var sectionItemsBasketRecap = document.getElementById("cart__items")
-sectionItemsBasketRecap.insertBefore(errorMessage);
+//sectionItemsBasketRecap.insertBefore(errorMessage);
 
 function articleProduitPanier(product){
     articlePanier =  document.createElement("article");
@@ -244,7 +244,7 @@ document.querySelector(".cart__order__form").addEventListener("submit", function
         .then(function (data){
            console.log(data)
            localStorage.clear()
-           document.location.href = "confirmation.html?orderId=" +data.orderId;
+           window.location.href = "confirmation.html?orderId=+${data.orderId}";
         })
         .catch (function (err){
             console.log(err.message)
