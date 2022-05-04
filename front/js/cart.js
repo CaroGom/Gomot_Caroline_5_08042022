@@ -216,6 +216,7 @@ document.querySelector(".cart__order__form").addEventListener("submit", function
     creerIdListePanier();
     creerInfosCommandePanier();
     console.log(infosCommandePanier);
+    
     if (idListePanier != 0 && Object.values(results).every(value => value == true)){
         fetch('http://localhost:3000/api/products/order', {
             method: "POST",
@@ -232,7 +233,7 @@ document.querySelector(".cart__order__form").addEventListener("submit", function
         .then(function (data){
            console.log(data)
            localStorage.clear()
-           document.location.href = "confirmation.html?orderId=" +data.commandeIdConfirmation;
+           document.location.href = "confirmation.html?orderId=" +data.orderId;
         })
         .catch (function (err){
             console.log(err.message)
