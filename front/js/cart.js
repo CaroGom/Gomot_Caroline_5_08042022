@@ -244,7 +244,8 @@ document.querySelector(".cart__order__form").addEventListener("submit", function
         .then(function (data){
            console.log(data)
            localStorage.clear()
-           window.location.href = "confirmation.html?orderId=+${data.orderId}";
+           window.location.href = "confirmation.html?order=${data.orderId}";
+           console.log(data.orderId);
         })
         .catch (function (err){
             console.log(err.message)
