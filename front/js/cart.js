@@ -24,7 +24,8 @@ console.log(panier[i].id);
         })
     }
 var basketContent = getBasket();
- var sectionItemsBasketRecap = document.getElementById("cart__items")
+var sectionItemsBasketRecap = document.getElementById("cart__items")
+sectionItemsBasketRecap.insertBefore(errorMessage);
 
 function articleProduitPanier(product){
     articlePanier =  document.createElement("article");
@@ -149,6 +150,12 @@ function voirPanier(i) {
     
 }
 
+var errorMessage = document.createElement("p");
+if (panier == 0){
+    errorMessage.textContent = "Votre panier est vide !";
+    errorMessage.style.fontSize ="32px";
+    errorMessage.style.textAlign ="center";
+}
 
 var results = {
     firstName : false,
@@ -197,37 +204,41 @@ function creerIdListePanier(){
     }
 }
 
-var infosCommandePanier
-function creerInfosCommandePanier(){
-    infosCommandePanier ={
-        contact : {
-            firstName : firstName.value,
-            lastName : lastName.value,
-            address : address.value,
-            city : city.value,
-            email : email.value,
-        },
-        products : idListePanier,
-    }
+
+
+var contact = {
+    firstName : firstName.value,
+    lastName : lastName.value,
+    address : address.value,
+    city : city.value,
+    email : email.value,
 }
+
+var infosCommandePanier = {
+    contact: contact,
+    products: idListePanier
+}
+
+var sendOrder = {
+    method :"POST",
+    headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(infosCommandePanier)
+};
 
 document.querySelector(".cart__order__form").addEventListener("submit", function (event){
     event.preventDefault();
     creerIdListePanier();
-    creerInfosCommandePanier();
-    console.log(infosCommandePanier);
     
+    console.log(infosCommandePanier);
+
     if (idListePanier != 0 && Object.values(results).every(value => value == true)){
-        fetch('http://localhost:3000/api/products/order', {
-            method: "POST",
-            headers : {
-                'Content-Type': 'application.json',
-            },
-            body: JSON.stringify(infosCommandePanier),
-        })
+        fetch('http://localhost:3000/api/products/order', sendOrder) 
         .then(function(response){
             if (response.ok){
-                return response.json()
+                return response.json();
             }
         })
         .then(function (data){
