@@ -228,6 +228,13 @@ var sendOrder = {
     body: JSON.stringify(infosCommandePanier)
 };
 console.log(sendOrder);
+
+if (localStorage.getItem('orderId') != null) {
+    document.getElementById('orderId').innerHTML = `<p>`+ localStorage.getItem('orderId')
+    localStorage.clear()
+}
+console.log(orderId);
+
 document.querySelector(".cart__order__form").addEventListener("submit", function (event){
     event.preventDefault();
     creerIdListePanier();
@@ -237,25 +244,20 @@ document.querySelector(".cart__order__form").addEventListener("submit", function
     if (idListePanier != 0 && Object.values(results).every(value => value == true)){
       
         fetch("http://localhost:3000/api/products/order", sendOrder)
-        .then(
-            async (response) => {
-                try {
-                    if(response.ok) {
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            localStorage.clear();
+            localStorage.setItem("orderId", data.orderId);
 
-                        const data = await response.json();
-                        /*Réponse envoyée par l'API contenant l'orderId
-                        console.log(data);*/
-                        console.log(data);
-                        // Redirection vers la page Confirmation
-                        window.location.href = `confirmation.html?order=${data.orderId}`;
-                    }
-                }
-                catch(error) {
-                    alert("Le serveur ne répond pas. Si le problème persiste, contactez-nous");
-                };
-            }
-          )  }
+            document.location.href = "confirmation.html";
         })
+        .catch((err) => {
+            alert ("Problème avec fetch : " + err.message);
+        });
+        }
+})
+        
 
 
 /*
