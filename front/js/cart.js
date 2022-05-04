@@ -227,7 +227,7 @@ var sendOrder = {
     },
     body: JSON.stringify(infosCommandePanier)
 };
-
+console.log(sendOrder);
 document.querySelector(".cart__order__form").addEventListener("submit", function (event){
     event.preventDefault();
     creerIdListePanier();
