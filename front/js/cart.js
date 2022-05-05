@@ -201,6 +201,7 @@ var idListePanier = [];
 function creerIdListePanier(){
     for (let i in panier){
         idListePanier.push(panier[i].id);
+        console.log(idListePanier);
     }
 }
 
@@ -218,6 +219,8 @@ var infosCommandePanier = {
     contact: contact,
     products: idListePanier
 }
+
+console.log(infosCommandePanier);
 
 var sendOrder = {
     method :"POST",
