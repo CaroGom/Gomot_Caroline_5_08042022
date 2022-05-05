@@ -242,19 +242,32 @@ document.querySelector(".cart__order__form").addEventListener("submit", function
 
     if (idListePanier != 0 && Object.values(results).every(value => value == true)){
       
-        fetch("http://localhost:3000/api/products/order", sendOrder)
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data);
-            localStorage.clear();
-            localStorage.setItem("orderId", data.orderId);
-
-            document.location.href = "confirmation.html";
+        fetch("http://localhost:3000/api/products/order", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(orderInfos),
         })
-        .catch((err) => {
-            alert ("Problème avec fetch : " + err.message);
-        });
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json()
+                }
+            })
+
+        .then(function (data) {
+                console.log(data.orderId)
+                localStorage.clear()
+                document.location.href = "confirmation.html?orderId=" + data.orderId
+            })
+            //En cas d'erreur, affichage du message correspondant dans la console
+            .catch(function (err) {
+                console.log(err.message)
+            })
         }
+     else if (!Object.values(results).every(value => value == true)) {
+        alert("Veuillez compléter et/ou vérifier les données du formulaire.")
+     }
 })
         
 
