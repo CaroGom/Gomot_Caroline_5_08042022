@@ -247,7 +247,7 @@ document.querySelector(".cart__order__form").addEventListener("submit", function
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(orderInfos),
+            body: JSON.stringify(infosCommandePanier),
         })
             .then(function (response) {
                 if (response.ok) {
