@@ -10,10 +10,14 @@ function saveBasket(basket){
 function getBasket(){
     let basket = localStorage.getItem("basket");
     if (basket == null){
+    
        return [];
     
     }
-    else {
+    else if (document.readyState =="complete" && (panier == undefined || panier.length == 0)){
+        alert("Votre panier est vide :( Rendez-vous sur la page d'accueil pour admirer notre catalogue :)")
+    }
+        else {
         return JSON.parse(basket)
     }
 }
