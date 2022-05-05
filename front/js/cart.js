@@ -28,7 +28,7 @@ console.log(panier[i].id);
 var insertionMessageErreur = document.getElementById("cart__items");
 function messageErreur(){
     getBasket();
-    if (panier == undefined || panier.length == 0){
+    if (document.readyState =="complete" && (panier == undefined || panier.length == 0)){
         alert("Votre panier est vide :( Rendez-vous sur la page d'accueil pour admirer notre catalogue :)")
     }
 }
