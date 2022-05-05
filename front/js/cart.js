@@ -206,18 +206,18 @@ function creerIdListePanier(){
 }
 
 
-
-var contact = {
-    firstName : firstName.value,
-    lastName : lastName.value,
-    address : address.value,
-    city : city.value,
-    email : email.value,
-}
-
-var infosCommandePanier = {
-    contact: contact,
+let infosCommandePanier 
+function creerInfosCommandePanier () {
+    infosCommandePanier ={ 
+        contact:  {
+        firstName : firstName.value,
+        lastName : lastName.value,
+        address : address.value,
+        city : city.value,
+        email : email.value,
+    },
     products: idListePanier
+    }
 }
 
 console.log(infosCommandePanier);
@@ -232,16 +232,12 @@ var sendOrder = {
 };
 console.log(sendOrder);
 
-if (localStorage.getItem('orderId') != null) {
-    document.getElementById('orderId').innerHTML = `<p>`+ localStorage.getItem('orderId')
-    localStorage.clear()
-}
-console.log(orderId);
+
 
 document.querySelector(".cart__order__form").addEventListener("submit", function (event){
     event.preventDefault();
     creerIdListePanier();
-    
+    creerInfosCommandePanier();
     console.log(infosCommandePanier);
 
     if (idListePanier != 0 && Object.values(results).every(value => value == true)){
