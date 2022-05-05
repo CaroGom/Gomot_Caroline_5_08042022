@@ -26,7 +26,11 @@ console.log(panier[i].id);
         })
     }
 
-
+function messageErreur(){
+    if (panier == undefined || panier.length == 0){
+        alert("Votre panier est vide :( Rendez-vous sur la page d'accueil pour admirer notre catalogue :)")
+    }
+}
 
 function articleProduitPanier(product){
     articlePanier =  document.createElement("article");
