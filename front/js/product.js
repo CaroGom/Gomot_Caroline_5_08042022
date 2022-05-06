@@ -105,18 +105,24 @@ var btnCartAdd = document.getElementById("addToCart").addEventListener("click", 
         numberof : parseInt(quantity.value)
     };
     if (selectedProductInfo.color == ""){
-        alert("Veuillez sélectionner une couleur")
-    }
-    if (selectedProductInfo.quantity < 1 || selectedProductInfo.quantity > 100){
-        alert("La quantité de produit sélectionnée est invalide.")
-    }
-    console.log(selectedProductInfo);
+        
+        if (selectedProductInfo.quantity < 1 || selectedProductInfo.quantity > 100){
+            alert("Veuillez sélectionner une couleur et une quantité valide")
+        }
+        else {
+            alert("Veuillez sélectionner une couleur")
+        }
     
-    addBasket(selectedProductInfo);
-    getBasket();
-    
-    alert("Vous avez bien ajouté ce produit dans votre panier.");
-
+        if (selectedProductInfo.quantity < 1 || selectedProductInfo.quantity > 100){
+            alert("La quantité de produit sélectionnée est invalide.")
+        }
+    else{
+        addBasket(selectedProductInfo);
+        console.log(selectedProductInfo);
+        getBasket();
+        alert("Vous avez bien ajouté ce produit dans votre panier.");
+    }
+    }
 });
 
 
