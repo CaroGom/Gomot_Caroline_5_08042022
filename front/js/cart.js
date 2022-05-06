@@ -2,7 +2,7 @@
 
 var panier = getBasket();
 console.log(panier);
-if (document.readyState =="complete" && (basket == undefined || basket.length == 0)){
+if (document.readyState =="complete" && (panier == undefined || panier.length == 0)){
     alert("Votre panier est vide :( Rendez-vous sur la page d'accueil pour admirer notre catalogue :)")
  
 }
