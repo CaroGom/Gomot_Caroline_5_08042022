@@ -102,8 +102,8 @@ var btnCartAdd = document.getElementById("addToCart").addEventListener("click", 
     
     addBasket(selectedProductInfo);
     getBasket();
-    var produitsPanier = console.log(getBasket());
-    alert("Vous avez dans votre panier" + " "+ basket);
+    
+    alert("Vous avez bien ajouté ce produit dans votre panier.");
 
 });
 
