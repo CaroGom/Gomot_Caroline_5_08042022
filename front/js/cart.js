@@ -104,6 +104,7 @@ function miseAJourQtePanier(anyProduct, input){
 }
 //pour chaque produit du panier, afficher :
 function voirPanier(i) {
+    getBasket();
     //DOM <article>
     articleProduitPanier(panier[i]);
     //DOM <img>
