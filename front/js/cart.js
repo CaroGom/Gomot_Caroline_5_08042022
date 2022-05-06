@@ -31,7 +31,7 @@ console.log(panier[i].id);
          
         })
     }
-var insertionMessageErreur = document.getElementById("cart__items");
+
 function messageErreur(){
     getBasket();
     if (document.readyState =="complete" && (panier == undefined || panier.length == 0)){
@@ -152,12 +152,7 @@ function voirPanier(i) {
     
 }
 
-var errorMessage = document.createElement("p");
-if (panier == 0){
-    errorMessage.textContent = "Votre panier est vide !";
-    errorMessage.style.fontSize ="32px";
-    errorMessage.style.textAlign ="center";
-}
+
 //établissement des éléments du formulaires avec des booléens qui les établissent comme non valides par défaut
 var results = {
     firstName : false,

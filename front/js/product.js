@@ -96,8 +96,20 @@ var quantity = document.getElementById("quantity");
 //event : dans une variable prend l'id depuis l'url, la couleur depuis la value de l'input colors, le nombre depuis la valeur de l'input quantity et transformation de cette valeur string en number
 //appel de la fonction addBasket() de basket.js avec en argument la variable juste créée
 //appel de la fonction getBasket() de basket.js vide pour avoir le panier à jour
-var btnCartAdd = document.getElementById("addToCart").addEventListener("click", function() {
-    var selectedProductInfo = {id : urlId, color : colors.value, numberof : parseInt(quantity.value)};
+var btnCartAdd = document.getElementById("addToCart").addEventListener("click", function(event) {
+    event.preventDefault();
+
+    var selectedProductInfo = {
+        id : urlId, 
+        color : colors.value, 
+        numberof : parseInt(quantity.value)
+    };
+    if (selectedProductInfo.color == ""){
+        alert("Veuillez sélectionner une couleur")
+    }
+    if (selectedProductInfo.quantity < 1 || selectedProductInfo.quantity > 100){
+        alert("La quantité de produit sélectionnée est invalide.")
+    }
     console.log(selectedProductInfo);
     
     addBasket(selectedProductInfo);
