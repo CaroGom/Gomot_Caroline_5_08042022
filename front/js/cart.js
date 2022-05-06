@@ -2,9 +2,11 @@
 
 var panier = getBasket();
 console.log(panier);
+document.onreadystatechange = function (){
 if (document.readyState =="complete" && (panier == undefined || panier.length == 0)){
     alert("Votre panier est vide :( Rendez-vous sur la page d'accueil pour admirer notre catalogue :)")
  
+}
 }
 //boucle qui appelle l'API pour chaque élément du panier
 for (let i in panier) {
