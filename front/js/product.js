@@ -103,7 +103,7 @@ var btnCartAdd = document.getElementById("addToCart").addEventListener("click", 
     addBasket(selectedProductInfo);
     getBasket();
     var produitsPanier = console.log(getBasket());
-    alert("Vous avez dans votre panier" + " "+ selectedProductInfo);
+    alert("Vous avez dans votre panier" + " "+ getBasket());
 
 });
 
