@@ -1,5 +1,5 @@
 // création du panier dans le localStorage
-
+let basket = localStorage.getItem("basket");
 function saveBasket(basket){
     localStorage.setItem("basket", JSON.stringify(basket));
 }
