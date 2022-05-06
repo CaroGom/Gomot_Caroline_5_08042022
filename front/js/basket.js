@@ -11,7 +11,7 @@ function getBasket(){
        return [];
     
     }
-    else if (document.readyState =="complete" && (panier == undefined || panier.length == 0)){
+    else if (document.readyState =="complete" && (basket == undefined || basket.length == 0)){
         alert("Votre panier est vide :( Rendez-vous sur la page d'accueil pour admirer notre catalogue :)")
     }
         else {
