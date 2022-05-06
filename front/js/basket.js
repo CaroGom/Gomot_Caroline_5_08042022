@@ -1,12 +1,9 @@
-
-
-
-
+// création du panier dans le localStorage
 
 function saveBasket(basket){
     localStorage.setItem("basket", JSON.stringify(basket));
 }
-
+// prend les informations du panier dans le localStorage
 function getBasket(){
     let basket = localStorage.getItem("basket");
     if (basket == null){
@@ -22,7 +19,11 @@ function getBasket(){
     }
 }
 
-
+// ajoute un produit au panier
+//prend le panier existant et cherche si il y a des produits existants avec l'id et la couleur du produit qu'on essaie d'ajouter
+//si oui on va modifier le nombre du produit existant en ajoutant le nombre de produits qu'on essaie d'ajouter
+// si non on ajoute le produit entier
+//sauvegarde du panier
 function addBasket(product){
     let basket = getBasket();
     let foundProduct = basket.find (p => p.id == product.id && p.color == product.color)
@@ -37,59 +38,38 @@ function addBasket(product){
     
     saveBasket(basket);
 }
+//fonction qui enlève un produit du tableau panier, et stocke le résultat dans le localStorage + supprime les éléments DOM associés + recalcule le panier
+function enleverProduitPanier(index, element){
+    if (panier.length ==1){
+        panier = [];
+    }
+    else {
+        panier.splice(index, 1)
+    }
+    localStorage.cart = JSON.stringify(panier);
+    element.closest("article").remove();
+    getBasket();
+    additionPrixProduitsPanier()
+}
 
-/*
-function addBasket(product){
-    let basket = getBasket();
-    let foundProduct = basket.find (p => p.id == product.id, p.colors == product.colors)
-        if (foundProduct != undefined){
-            foundProduct.numberof++;
-        }
-        else {
-            product.numberof = 1;
-            basket.push(product);
-        }
+//fonction qui calcule le montant total du panier
+function additionPrixProduitsPanier(){
+    prixTotal = 0;
+    qteTotale = 0;
     
-    saveBasket(basket);
-}
-
-*/
-
-function removeFromBasket(product){
-    let basket = getBasket();
-    basket = basket.filter(p => p.id != product.id);
-    saveBasket(basket);
-}
-
-function changeQuantity(product, numberof){
-    let basket = getBasket();
-    let foundProduct = basket.find (p => p.id == product.id)
-        if (foundProduct != undefined){
-            foundProduct.numberof += numberof;
-            if(foundProduct.numberof <= 0){
-                removeFromBasket(foundProduct);
-            }
-            else{
-                saveBasket(basket);
-            }
-        } 
-}
-
-function getNumberProduct(){
-    let basket = getBasket();
-    let number = 0;
-    for (let product of basket){
-        number += product.numberof;
+    for (let i in panier){
+        prixTotal += panier[i].price * panier[i].numberof;
+        qteTotale += panier[i].numberof;
     }
-    return number;
+    console.log(qteTotale);
+    console.log(prixTotal);
+
+    document.getElementById("totalQuantity").innerText = qteTotale;
+    document.getElementById("totalPrice").innerText = prixTotal;
+
+    console.log(panier);
 }
 
-function getTotalPrice(){
-    let basket = getBasket();
-    let total = 0;
-    for (let product of basket){
-        total += product.numberof * product.price;
-    }
-    return total;
 
-}
+
+

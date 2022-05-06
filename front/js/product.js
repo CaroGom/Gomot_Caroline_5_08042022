@@ -1,4 +1,4 @@
-//fetch and DOM insertions
+//requête fetch 
 
 fetch('http://localhost:3000/api/products')
 .then(function(res){
@@ -6,6 +6,9 @@ fetch('http://localhost:3000/api/products')
         return res.json();
     }
 })
+//dans l'url de la page, extraction de l'id
+//selon l'id, isoler dans l'API le produit en question
+//appliquer les fonctions listées avec les informations du produit en question dans l'API
 .then(function(data) {
    
     var urlIndex = data.findIndex(product => product._id == urlId)
@@ -20,13 +23,13 @@ fetch('http://localhost:3000/api/products')
       couleursProduit(selectedItem)
 })
 
-//setting up the id recuperation in page url
+//récupération de l'id dans l'url de la page
 var urlId = new URLSearchParams(document.location.search).get("id")
 console.log(urlId);
 
-//getting image div, insertion of img in DOM with src and alt attributes from selectedItem
+//sélection de la div avec la classe item__img
 var divProduit = document.querySelector("article > .item__img");
-
+//fonction de création de la balise <img> enfant de <div class="item__img"> avec attributs src et alt correspondants depuis l'API
 function imageProduit(product){
     imgProduct = document.createElement("img");
     divProduit.appendChild(imgProduct);
@@ -35,9 +38,9 @@ function imageProduit(product){
 
 }
 
-//getting title tag, insertion of selectedItem .name in tag
+//sélection de la balise <title>
 var titrePage = document.querySelector("title");
-
+//fonction de modification de la balise <title> selon les informations correspondantes dans l'API
 function titrePageProduit(product){
   urlId.indexOf(product._id);
   if (urlId == product._id){
@@ -48,30 +51,30 @@ function titrePageProduit(product){
   } 
 
 }
-//getting the product h1 title tag, inserting of selectedItem .name in tag
+//sélection du <h1 id="title">
 var produitH1 = document.querySelector("#title");
-
+//fonction de modification de la balise <h1> selon les infos correspondantes dans l'API
 function titreProduit(product){
     produitH1.textContent = product.name;
 }
 
-//getting the product price span tag, inserting the selectedItem .price in tag
+//sélection de la balise <span id="price">
 var produitPrixSpan = document.querySelector("#price");
-
+//fonction de modification de la balise <span id="price"> selon les infos correspondantes dans l'API
 function prixProduit(product){
     produitPrixSpan.textContent =product.price;
 }
 
-//getting the product description p tag, inserting the selectedItem .description in tag
+//sélection de la balise <p id="description">
 var produitDescriptionP = document.querySelector("#description");
-
+//fonction de modification de la balise <p id="description"> selon les infos correspondantes dans l'API
 function descriptionProduit(product){
     produitDescriptionP.textContent = product.description;
 }
 
-//getting the color select tag, inserting option tags in the DOM, for of loop to repeat according to color array in SelectedItem
+//sélection de la balise <input id="colors">
 var couleursSelectTag = document.querySelector("#colors");
-
+//fonction de création de balises <option> enfants de <input> avec attribut value et contenu pour chaque élément color du tableau du produit dans l'API
 function couleursProduit(product){
     for (let color of product.colors){
     console.log(color)
@@ -82,18 +85,17 @@ function couleursProduit(product){
     }
 }
 
-
+//déclaration du panier = un tableau vide
 var panierArray = [];
-
+//sélection de l'élément colors dans le DOM 
 var colors = document.getElementById("colors");
-
-
+//sélection de l'élément quantity dans le DOM 
 var quantity = document.getElementById("quantity");
 
-
-
-
-
+//variable qui regroupe l'event onclick 
+//event : dans une variable prend l'id depuis l'url, la couleur depuis la value de l'input colors, le nombre depuis la valeur de l'input quantity et transformation de cette valeur string en number
+//appel de la fonction addBasket() de basket.js avec en argument la variable juste créée
+//appel de la fonction getBasket() de basket.js vide pour avoir le panier à jour
 var btnCartAdd = document.getElementById("addToCart").addEventListener("click", function() {
     var selectedProductInfo = {id : urlId, color : colors.value, numberof : parseInt(quantity.value)};
     console.log(selectedProductInfo);
@@ -106,56 +108,4 @@ var btnCartAdd = document.getElementById("addToCart").addEventListener("click", 
 });
 
 
-/*
-//addBasket({id : urlId, color : couleurSelectionnee, quantity : quantiteSelectionnee});
 
-
-
-
-var btnCartAdd = document.getElementById("addToCart").addEventListener("click", function() {
-
-    addBasket(infosProduitPanier);
-alert("Produit ajouté au panier");
-
-});
-
-
-/*var quantiteProduit =   document.getElementById("quantity");
-var quantiteProduitSelectionnee = { valeurQuantite : 'quantite'}
- 
-
-quantiteProduit.addEventListener("change",function() {
-    var infoQuantite = this.value;
-    quantiteProduitSelectionnee.valeurQuantite =this.value;
-
-    return console.log(infoQuantite), infoQuantite;
-});
-var couleurProduit = document.getElementById("colors").addEventListener("change",function() {
-    var infoCouleur = this.value;
-    return console.log(infoCouleur), infoCouleur;
-});
-console.log(quantiteProduit);
-
-var infosProduitPanier = [];
-    infosProduitPanier[0] = urlId;
-    infosProduitPanier[1] =quantiteProduitSelectionnee.valeurQuantite;
-    infosProduitPanier[2] =couleurProduit;
-    
-
-var btnCartAdd = document.getElementById("addToCart").addEventListener("click", function() {
-
-    addBasket(infosProduitPanier);
-alert("Produit ajouté au panier");
-
-});
-
-
-
-
-//Putting products in the basket
-//Make an array with product id, product quantity, product color
-//Using localStorage
-//When adding a new product, a new element must be added to the array
-//When adding more of a product already in basket (same id same color), increment the relevant quantity in array
-
-*/

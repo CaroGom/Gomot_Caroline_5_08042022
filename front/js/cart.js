@@ -77,19 +77,7 @@ function descriptionProduitPanier(index, text){
         }
     }
 }
-//fonction qui enlève un produit du tableau panier, et stocke le résultat dans le localStorage + supprime les éléments DOM associés + recalcule le panier
-function enleverProduitPanier(index, element){
-    if (panier.length ==1){
-        panier = [];
-    }
-    else {
-        panier.splice(index, 1)
-    }
-    localStorage.cart = JSON.stringify(panier);
-    element.closest("article").remove();
-    getBasket();
-    additionPrixProduitsPanier()
-}
+
 //fonction qui crée un input avec les bonnes classes, attributs, appel de la fonction qui va ajouter les produits ajoutés ou enlevés au panier quand on les change
 function inputQteProduitPanier(product){
     inputQuantity = document.createElement("input");
@@ -108,23 +96,7 @@ function inputQteProduitPanier(product){
     }
     
 }
-//fonction qui récupère les valeurs prix et quantités pour chaque produit dans le localStorage et assignation du résultat aux éléments DOM
-function additionPrixProduitsPanier(){
-    prixTotal = 0;
-    qteTotale = 0;
-    
-    for (let i in panier){
-        prixTotal += panier[i].price * panier[i].numberof;
-        qteTotale += panier[i].numberof;
-    }
-    console.log(qteTotale);
-    console.log(prixTotal);
 
-    document.getElementById("totalQuantity").innerText = qteTotale;
-    document.getElementById("totalPrice").innerText = prixTotal;
-
-    console.log(panier);
-}
 //fonction mise à jour du panier selon la valeur de l'input, va modifier la donnée numberof du produit dans le localStorage
 function miseAJourQtePanier(anyProduct, input){
     anyProduct.numberof = parseInt(input.value);
