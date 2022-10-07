@@ -1,5 +1,6 @@
 # Kanap #
 
+--- Kanap est un projet pour lequel j'ai rédigé le front-end en JavaScript. Le back-end a été fourni en JavaScript par OpenClassrooms.
 This is the front end and back end server for Project 5 of the Web Developer path.
 
 ### Back end Prerequisites ###
